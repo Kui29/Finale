@@ -1,0 +1,133 @@
+ <!-- HTML 5 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Forms Data Entry</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Link to external CSSS file -->  
+    <script src="validation.js" defer></script> <!-- Link to external JS file -->  
+</head>
+<body>
+     <!-- validateForm function is called when submit button is clicked -->
+    <h2>Department </h2>
+    <form id="departmentForm" onsubmit="return validateForm('departmentForm')">
+        Department ID: <input type="text" name="dptId"><br>
+        Faculty: <input type="text" name="dptFaculty"><br>
+        Department Name: <input type="text" name="dptName"><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <h2>Programmes</h2>
+    <form id="programmesForm" onsubmit="return validateForm('programmesForm')">
+        Programme ID: <input type="text" name="progId"><br>
+        Programme Name: <input type="text" name="progName"><br>
+        Programme Duration: <input type="text" name="progDuration"><br>
+        Department ID: <input type="text" name="dptId"><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <h2>Units</h2>
+    <form id="unitsForm" onsubmit="return validateForm('unitsForm')">
+        Unit Code: <input type="text" name="unitCode"><br>
+        Unit Name: <input type="text" name="unitName"><br>
+        Programme ID: <input type="text" name="progId"><br>
+        Credit Hours: <input type="number" name="creditHours"><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <h2>Students</h2>
+    <form id="studentsForm" onsubmit="return validateForm('studentsForm')">
+        Student ID: <input type="text" name="stdId"><br>
+        Name: <input type="text" name="stdName"><br>
+        Gender:<br><br><center><label for="male">Male</label>
+        <input type="radio" id="male" name="stdGender" value="Male">
+        <label for="female">Female</label>
+        <input type="radio" id="female" name="stdGender" value="Female"></center><br><br>
+    
+        
+        Email: <input type="text" name="stdEmail"><br>
+        Contact: <input type="text" name="stdContact"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Lecturer </h2>
+    <form id="lecturerForm" onsubmit="return validateForm('lecturerForm')">
+        Lecturer ID: <input type="text" name="lecId"><br>
+        Name: <input type="text" name="lecName"><br>
+        Email: <input type="text" name="lecEmail"><br>
+        Contact: <input type="text" name="lecContact"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Lecture </h2>
+    <form id="lectureForm" onsubmit="return validateForm('lectureForm')">
+        Lecture Name: <input type="text" name="lectureName"><br>
+        Lecture Date: <input type="text" name="lectureDate" placeholder="dd-mm-yyyy"><br>
+        Lecture Time:<select name="lectureTime">
+            <option value="Morning">08:00-11:00</option>
+            <option value="Mid-day">11:00-14:00</option>
+            <option value="Evening">14:00-17:00</option>
+                     </select><br>
+        Location ID: <input type="text" name="locId"><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <h2>Units On Offer</h2>
+    <form id="unitsOnOfferForm" onsubmit="return validateForm('unitsOnOfferForm')">
+        Unit Code: <input type="text" name="unitCode"><br>
+        Academic Year: <input type="text" name="academicYear"><br>
+        Semester: <input type="text" name="semester"><br>
+        Cohort: <input type="text" name="cohort"><br>
+        Lecturer ID: <input type="text" name="lecId"><br>
+        Location ID: <input type="text" name="locId"><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <h2>Unit Registration</h2>
+    <form id="unitRegistrationForm" onsubmit="return validateForm('unitRegistrationForm')">
+        Student ID: <input type="text" name="stdId"><br>
+        Unit Code: <input type="text" name="unitCode"><br>
+        Academic Year: <input type="text" name="academicYear"><br>
+        Semester: <input type="text" name="semester"><br>
+        Academic Stage: <input type="text" name="academicStage"><br>
+        Registration Status: <input type="text" name="registrationStatus"><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <h2>Unit Attendance</h2>
+    <form id="unitAttendanceForm" onsubmit="return validateForm('unitAttendanceForm')">
+        Student ID: <input type="text" name="stdId"><br>
+        Unit Code: <input type="text" name="unitCode"><br>
+        Lecture Name: <input type="text" name="lectureName"><br>
+        Lecturer ID: <input type="text" name="lecId"><br>
+        Location ID: <input type="text" name="locId"><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <h2>QR Code </h2>
+    <form id="qrCodeForm" onsubmit="return validateForm('qrCodeForm')">
+        QR Label: <input type="text" name="qrLabel"><br>
+        QR Photo: <input type="file" name="qrPhoto"><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <h2>Sign Up</h2>
+    <form id="signUpForm" onsubmit="return validateForm('signUpForm')">
+        Name: <input type="text" name="name"><br>
+        Email: <input type="text" name="email"><br>
+        Password: <input type="password" name="password"><br>
+        Role: <select name="role">
+            <option value="student">Student</option>
+            <option value="lecturer">Lecturer</option>
+        </select><br>
+        <input type="submit" value="Sign Up">
+    </form>
+    
+    <h2>Login</h2>
+    <form id="loginForm" onsubmit="return validateForm('loginForm')">
+        Email: <input type="text" name="email"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+

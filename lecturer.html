@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturer Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Link to external CSS file -->
+    <script>
+        function validateForm(formId) {
+            var form = document.getElementById(formId);
+            var lecId = form.lecId.value.trim();
+            var lecName = form.lecName.value.trim();
+            var lecEmail = form.lecEmail.value.trim();
+            var lecContact = form.lecContact.value.trim();
+
+            // Check for empty fields
+            if (!lecId || !lecName || !lecEmail || !lecContact) {
+                alert("All fields are required.");
+                return false;
+            }
+
+            // Validate email format
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(lecEmail)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (lecPassword === "") {
+        alert("Password is required.");
+        return false;
+            }
+
+             if (lecPassword.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return false;
+            }
+             if (lecPasswordConf !== stdPassword) {
+         alert("Does not match password.");
+         return false;
+    }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Lecturer</h2>
+    <form id="lecturerForm" action="lecturer.php" method="POST" onsubmit="return validateForm('lecturerForm')">
+        Lecturer ID: <input type="text" name="lecId"><br>
+        Name: <input type="text" name="lecName"><br>
+        Email: <input type="text" name="lecEmail"><br>
+        Contact: <input type="text" name="lecContact"><br>
+        Password: <input  type="password" name="stdPassword"><br>
+        Password Confirmation: <input  type="password" name="stdPasswordConf"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

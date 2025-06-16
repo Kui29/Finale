@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+.ptsetings{width:100%;height:20%;}
+input[type=text]{position:relative;width:100%;height:20px;padding-right:100px;}
+</style>
+<script>
+/*
+Validating the date
+1. Whether it is of the format dd-mm-yyyy
+2. DOB cannot be greater than today
+3. Whether it is empty
+*/
+function valDate(){
+//Getting the date Entered
+cdate=document.getElementById("dob").value;
+//Whether it is of the format dd-mm-yyyy and also if it is empty( Implied)
+if(cdate.indexOf("-")==-1){
+alert("Date must be entered and of the format (dd-mm-yyyy)");
+document.getElementById("dob").focus();
+return false;
+}
+comps=cdate.split("-");
+//Ensuring the date components are of correct lengtgh
+if(comps[0].length<1 || comps[1].length<1|| comps[2].length<4){
+alert("Date must be of the format (dd-mm-yyyy)");
+document.getElementById("dob").focus();
+return false;
+}
+//Ensuring the date components are intergers(numbers)
+//NaN is a JavaScript reserved word indicating that a value is not a number.
+//The global JavaScript function isNaN() can be used to find out if a value is a number
+if(isNaN(comps[0])||isNaN(comps[1])||isNaN(comps[2])){
+alert("Date components must be intergers and must be of the format (dd-mm-yyyy)");
+document.getElementById("dob").focus();
+return false;
+}
+//Validating the date of birth to be within the acceptable range
+var today=new Date(); //Todays Date
+//Creating a date using the entered data
+var givendt=new Date();
+givendt.setFullYear(comps[2],comps[1]-1,comps[0]);//The function setFullYear Set the year (optionally also month and day yyyy,mm,dd)
+//Comparing the dates
+if(givendt>today){
+alert("In correct Date: Date of Birth cannot be greater than today");
+document.getElementById("dob").focus();
+return false;
+}
+}//End of
+//Validating the Gender
+function validateGender(){
+index=document.getElementById("gender").options.selectedIndex;
+alert(index);
+if(index==0){
+alert("You must select Gender");
+return false;
+}else
+return true;
+}
+//Validating radio buttons
+function validateMarried(){
+// Note when using getElementById() approach you will need to all referenced radio butons have unique ids
+yes=document.getElementById("yes").checked;
+no=document.getElementById("no").checked;
+if(yes==false && yes==false){
+alert("We need to know whether you are married or not");
+return false;
+}else
+return true;
+}
+//We are referencing to the radio group by following the DOM path
+function validateRadioVs2(){
+// By using the common name Javascript will get the selected radio button
+val=document.patient.mared.value;
+if(val==""){
+alert("We need to know whether you are married or not OK");
+return false;
+}else
+return true;
+}
+//Validating email
+function validateEmail(){
+email=document.getElementById("email").value;
+if(email.length==0 || email.indexOf("@")==-1|| email.indexOf(".")==-1){
+alert("You must enter a valid email");
+document.getElementById("email").focus();
+return false;
+}else
+return true;
+}
+//Validating Number fiels
+function validateMobile(){
+mobile=document.getElementById("mobile").value;
+//Making Sure Entered Mobile is a number and also it is not empty
+if(mobile.length==0 || isNaN(mobile)){
+alert("You must enter a valid mobile Number");
+document.getElementById("mobile").focus();
+return false;
+}else
+return true;
+}
+//Validating Id Number fiels
+function validateIdNum(){
+idnum=document.getElementById("idnum").value;
+//Making Sure Entered number is a number and also it is not empty
+if(idnum.length==0 || isNaN(idnum)){
+alert("You must enter a valid idnum Number");
+document.getElementById("idnum").focus();
+return false;
+}else
+return true;
+}
+//Validating the check boxes
+function validateDone(){
+// Note when using getElementById() appoach you will need to ensure all referenced radio butons have unique ids
+val1=document.getElementById("vald1").checked;
+val2=document.getElementById("vald2").checked;
+val3=document.getElementById("vald3").checked;
+val4=document.getElementById("vald4").checked;
+val5=document.getElementById("vald5").checked;
+val6=document.getElementById("vald6").checked;
+if(val1==false && val2==false && val3==false && val4==false && val5==false && val6==false ){
+alert("Kindly Let us know Which validation areas you have not done");
+return false;
+}else
+return true;
+}
+//We use a single validation that call all other functions
+function validateForm(){
+//First we check other input filed for empty
+fname=document.patient.fname.value;
+sname=document.patient.sname.value;
+dob=document.patient.dob.value;
+if(fname==""){
+alert("Please Enter the First name");
+document.getElementById("fname").focus();
+return false;
+}
+if(sname==""){
+alert("Please Enter the Second Name");
+document.getElementById("sname").focus();
+return false;
+}
+if(dob==""){
+alert("Please Enter the Date of birth");
+document.getElementById("dob").focus();
+return false;
+}
+var rtned=true;
+rtned=validateGender();
+if(rtned==true)
+rtned=validateMarried();
+if(rtned==true)
+rtned=validateDone();
+if(rtned==true)
+rtned=validateEmail();
+if(rtned==true)
+rtned=validateMobile();
+if(rtned==true)
+rtned=validateIdNum();
+return rtned;
+}//end of validate form
+</script>
+</head><body>
+<div style="position:absolute;left:2%;top:10%;width:100%;">
+<form style="position:relative;background:green;width:100%;" name="patient" method="post" 
+action="saveDetails.php" onsubmit="return validateForm()">
+<table style="width:100%;padding:25px 100px 75px 20px;" border="1">
+<tbody>
+<tr style="background:aqua;font-size:22px;color:red;"><td colspan="4" align="center">Form Input 
+Validation Using JavScript Training</td><td><input type="submit" value="Send"></td></tr>
+<tr style="background:aqua;font-size:22px;color:red;"><td colspan="4" align="center">Patient 
+Details</td><td style="width:22%;">Areas Done</td></tr>
+<tr>
+<td>First Name<br><input type="text" name="fname" id="fname"></td>
+<td>Second Name<br><input type="text" name="sname" id="sname" style="width:60%;"></td>
+<td>DOB(dd-mm-yyyy)<br><input type="text" name="dob" id="dob" style="width:30%;" 
+onmouseout="valDate();"></td>
+<td>Gender<br><select name="gender" id="gender" style="width:60%;"><option value="" 
+selected="selected"></option><option value="Female">Female</option><option 
+value="Male">Male</option></select></td>
+<td rowspan="3"><br><input type="checkbox" name="val1" id="vald1" value="Empty Field">Empty
+Field<br>
+<input type="checkbox" name="val2" id="vald2" value="Date Format">Date Format<br>
+<input type="checkbox" name="val3" id="vald3" value="Date Range">Date Range<br>
+<input type="checkbox" name="val4" id="vald4" value="Number Range">Number Range<br>
+<input type="checkbox" name="val5" id="vald5" value="List Box">List Box<br>
+<input type="checkbox" name="val6" id="vald6" value="Check Box">Check Box<br>
+</td>
+</tr><tr>
+</tr><tr><td>Email<br><input type="text" name="email" id="email"></td>
+<td>Mobile<br><input type="text" name="mobile" id="mobile"></td>
+<td>Id Num<br><input type="text" name="idnum" id="idnum" style="width:100px;"></td>
+<td>Married<br><input type="radio" name="mared" id="yes" value="Yes" 
+checked="checked">Yes<br>
+<input type="radio" name="mared" id="no" value="No">No</td>
+</tr>
+<tr><td colspan="5" style="background:yellow;font-size:22px;color:orange;" align="center">Patient 
+Gudian</td></tr>
+<tr><td colspan="5"><table border="1">
+<tbody><tr><td>Full Name<br><textarea class="ptsetings" name="gfname" 
+id="gfname"></textarea></td>
+<td>Email<br><input type="text" name="gemail" id="gemail"></td>
+<td>Mobile<br><input type="text" name="gmobile" id="gmobile"></td>
+<td>Id Num<br><input type="text" name="gidnum" id="gidnum" style="width:30%;"></td>
+</tr></tbody></table></td>
+</tr>
+</tbody></table>
+</form>
+</div>
+</body></html>

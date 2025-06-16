@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Defines character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design -->
+    <title>Landing Page</title> <!-- Sets the webpage title -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif; /* Sets font family */
+            margin: 0; /* Removes default margin */
+            padding: 0; /* Removes default padding */
+            background-color: #f4f4f4; /* Light gray background */
+            text-align: center; /* Centers text */
+            position: relative;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('green_tick.jpg');
+            background-image: absolute;
+            opacity: 0.8;
+            z-index: 0;
+        }
+
+        /* Header Styles */
+        header {
+            background: #4CAF50; /* Dark gray background */
+            color: white; /* White text color */
+            padding: 1rem 0; /* Top and bottom padding */
+        }
+
+        /* Navigation Styles */
+        nav ul {
+            list-style: none; /* Removes bullet points */
+            padding: 0; /* Removes default padding */
+        }
+
+        nav ul li {
+            display: inline; /* Displays items inline */
+            margin: 0 15px; /* Adds spacing between items */
+        }
+
+        nav ul li a {
+            color: white; /* White link text */
+            text-decoration: none; /* Removes underline */
+            font-size: 18px; /* Sets font size */
+        }
+
+        /* Section Styles */
+        section {
+            background: white; /* White background */
+            margin: 20px auto; /* Centers section with margin */
+            padding: 20px; /* Adds padding inside section */
+            width: 80%; /* Sets section width */
+            max-width: 600px; /* Maximum width */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 {
+            color: #333; /* Dark gray text color */
+        }
+
+        /* Input Field Styles */
+        input {
+            width: 100%; /* Full width */
+            padding: 10px; /* Adds padding */
+            margin: 10px 0; /* Adds spacing */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        /* Button Styles */
+        button {
+            background: #4CAF50; /* Dark gray background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding inside button */
+            border: none; /* Removes border */
+            cursor: pointer; /* Pointer on hover */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        button:hover {
+            background: #4CAF50; /* Darker gray on hover */
+        }
+
+        /* Logo Container */
+        .logo-container {
+            display: flex; /* Enables flexbox */
+            justify-content: center; /* Centers logos */
+            align-items: center; /* Aligns logos vertically */
+            gap: 20px; /* Space between logos */
+            margin-top: 20px; /* Adds space above */
+        }
+
+        .logo-container img {
+            max-width: 100px; /* Limits size */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+        }
+
+        /* Scroll Buttons Styles */
+        #scrollUpBtn, #scrollDownBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            z-index: 1000;
+            transition: background ease-in-out 0.3s;
+        }
+        #scrollDownBtn {
+            top: 75px;
+            background: #4CAF50;
+            color: #fff; /* White text for down button */
+        }
+
+            #scrollUpBtn {
+            background: #fff;
+            color: #333; /* White text for down button */
+            }
+        #scrollUpBtn:hover, #scrollDownBtn:hover {
+            background: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+<div class="background-overlay"></div>
+<div class="main-container">
+    <!-- Header Section -->
+    <header>
+        <h1>Sahihi Attendance System</h1> <!-- Page title -->
+        <div class="logo-container">
+            <img src="tick.gif" alt="tick gif" style="background-color: #333;"> <!-- CUEA logo -->
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li> <!-- About section link -->
+                <li><a href="#branches">Branches</a></li> <!-- Branches section link -->
+                <li><a href="#contact">Contact</a></li> <!-- Contact section link -->
+                <li><a href="login.html">Login</a></li> <!-- Login page link -->
+            </ul>
+        </nav>
+        <!-- Scroll Buttons -->
+        <button id="scrollUpBtn" title="Scroll Up">&#8593;</button>
+        <button id="scrollDownBtn" title="Scroll Down">&#8595;</button>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>A smart and simple attendance system designed to make life easier for both students and lecturers. <br> <br>
+            The system uses QR codes to take attendance quickly and accurately—just a quick scan with a phone, and you're marked present!<br><br>
+            No more paper registers or manual entries, which means no more lost attendance records or time wasted on roll calls. <br><br>
+            Lecturers can easily monitor, manage, and access attendance records in real time, while students enjoy a smooth and hassle-free experience. <br><br>
+            With features like secure logins, instant notifications, and detailed reports, our goal is to make attendance management efficient, transparent, and stress-free for everyone.</p> <!-- Brief system description -->
+    </section>
+
+    <!-- Branches Section -->
+    <section id="branches">
+        <h2>Our Branches</h2>
+        <p>Find us in CUEA and Tangaza universities.</p> <!-- Branch locations -->
+        <div class="logo-container">
+            <img src="cuea.jpg" alt="CUEA Logo"> <!-- CUEA logo -->
+            <img src="tangaza.jpeg" alt="Tangaza Logo"> <!-- Tangaza logo -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@sahihi.com | Phone: +254717057351</p> <!-- Contact details -->
+    </section>
+
+    <script>
+        document.getElementById('scrollUpBtn').onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        document.getElementById('scrollDownBtn').onclick = function() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        };
+    </script>
+</div>
+</body>
+</html>

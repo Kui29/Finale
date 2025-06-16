@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h2>QR Code </h2>
+<form id="qrCodeForm" method="POST" action="qrEntry.php" onsubmit="return validateForm('qrCodeForm')">
+    QR Label: <input type="text" name="qrLabel"><br>
+    QR Photo: <input type="file" name="qrPhoto"><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

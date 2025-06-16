@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Sets character encoding for proper text display -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures mobile responsiveness -->
+    <title>Login</title> <!-- Sets the title of the webpage -->
+    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Links external CSS file for styling -->
+    
+    <script>
+        // Function to validate the login form
+        function validateForm(formId) {
+            let form = document.getElementById(formId); // Gets the form by its ID
+            let email = form.stdEmail.value.trim(); // Gets the email input and removes whitespace
+            let password = form.stdPassword.value.trim(); // Gets the password input and removes whitespace
+            let roleSelected = form.querySelector('input[name="role"]:checked'); // Checks if a role is selected
+
+            // Check if email field is empty
+            if (email === "") {
+                alert("Email is required.");
+                return false; // Stops form submission
+            }
+
+            // Validate email format (must contain '@' and '.' with correct order)
+            if (!email.includes("@") || !email.includes(".") || email.indexOf("@") > email.lastIndexOf(".")) {
+                alert("Please enter a valid email address.");
+                return false; // Stops form submission
+            }
+
+            // Check if password field is empty
+            if (password === "") {
+                alert("Password is required.");
+                return false; // Stops form submission
+            }
+
+            // Enforce password length requirement
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false; // Stops form submission
+            }
+
+            // Ensure a role is selected
+            if (!roleSelected) {
+                alert("Please select a role (Lecturer, Student, or HOD).");
+                return false; // Stops form submission
+            }
+
+            // Allow form submission for all valid roles
+            if (roleSelected.value === "Student" || roleSelected.value === "Lecturer" || roleSelected.value === "HOD") {
+                return true;
+            }
+
+            return false; // Prevents form submission by default
+        }
+    </script>
+</head>
+<body>
+    <h2>Login</h2> <!-- Page heading -->
+
+    <!-- Login Form -->
+    <form id="loginForm" action="login.php" method="POST" onsubmit="return validateForm('loginForm')">
+        Email: <input type="text" name="stdEmail"><br> <!-- Email input field -->
+        Password: <input type="password" name="stdPassword"><br> <!-- Password input field -->
+
+        Role:<br><br>
+        <center>
+            <!-- Radio buttons for role selection -->
+            <label for="Lecturer">Lecturer</label>
+            <input type="radio" id="Lecturer" name="role" value="Lecturer">
+            
+            <label for="Student">Student</label>
+            <input type="radio" id="Student" name="role" value="Student">
+
+            <label for="HOD">HOD</label>
+            <input type="radio" id="HOD" name="role" value="HOD">
+        </center>
+
+        <br><br>
+        <button type="submit" class="submit">Login</button> <!-- Submit button -->
+    </form>  
+
+</body>
+</html>

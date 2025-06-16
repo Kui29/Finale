@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Link to external CSSS file --> 
+<script>
+    function validateForm(formId) {
+        var form = document.getElementById(formId);
+        var unitCode = form.unitCode.value.trim();
+        var academicYear = form.academicYear.value.trim();
+        var semester = form.semester.value.trim();
+        var cohort = form.cohort.value.trim();
+        var lecId = form.lecId.value.trim();
+        var locId = form.locId.value.trim();
+    
+        if (unitCode === "") {
+            alert("Unit Code is required");
+            return false;
+        }
+        
+        if (academicYear === "" || isNaN(academicYear) || academicYear.length !== 4) {
+            alert("Enter a valid academic year (e.g., 2025)");
+            return false;
+        }
+        
+        if (semester === "" || (semester !== "1" && semester !== "2")) {
+            alert("Semester must be 1 or 2");
+            return false;
+        }
+        
+        if (cohort === "") {
+            alert("Cohort is required");
+            return false;
+        }
+        
+        if (lecId === "" ) {
+            alert("Enter a valid Lecturer ID");
+            return false;
+        }
+        
+        if (locId === "" ) {
+            alert("Enter a valid Location ID");
+            return false;
+        }
+        alert("Unit added successfully👍")
+        return true;
+    }
+    
+</script>
+</head>
+<body>
+    <h2>Units On Offer</h2>
+<form id="unitsOnOfferForm" onsubmit="return validateForm('unitsOnOfferForm')">
+    Unit Code: <input type="text" name="unitCode"><br>
+    Academic Year: <input type="text" name="academicYear"><br>
+    Semester: <input type="text" name="semester"><br>
+    Cohort: <input type="text" name="cohort"><br>
+    Lecturer ID: <input type="text" name="lecId"><br>
+    Location ID: <input type="text" name="locId"><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

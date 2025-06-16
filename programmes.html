@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmes Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Link to external CSS file -->
+    <script>
+        function validateForm(formId) {
+            var form = document.getElementById(formId);
+            var progId = form.progId.value.trim();
+            var progName = form.progName.value.trim();
+            var progDuration = form.progDuration.value.trim();
+            var dptId = form.dptId.value.trim();
+
+            // Check for empty fields
+            if (!progId || !progName || !progDuration || !dptId) {
+                alert("All fields are required.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Programmes</h2>
+    <form id="programmesForm" action="programmes.php" method="POST" onsubmit="return validateForm('programmesForm')">
+        Programme ID: <input type="text" name="progId"><br>
+        Programme Name: <input type="text" name="progName"><br>
+        Programme Duration: <input type="text" name="progDuration"><br>
+        Department ID: <input type="text" name="dptId"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

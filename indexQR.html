@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- Declares the document type as HTML5 -->
+
+<html lang="en">
+<!-- Opens the HTML document and specifies the language as English -->
+
+    <head>
+    <!-- The head section contains metadata and links to external resources like CSS and JavaScript. -->
+
+    <meta charset="UTF-8">
+        <!-- Defines UTF-8 encoding, a variable-width (1-4 bytes), 
+        ASCII-compatible format ideal for web and English texts,
+        unlike UTF-16 which uses 2-4 bytes and is better for non-Latin scripts like asian texts. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ensures the webpage is responsive by setting the visible area of a webpage width to the device's screen width. 
+         The "initial-scale=1.0" maintains a 1:1 zoom ratio for better mobile viewing. -->
+</head>
+
+    <title>Attendance System</title>
+    <style>
+       /*Internal CSS*/
+        .qr-code {
+            display: flex; 
+            flex-wrap: wrap;
+            width: 260px; /* 13 columns * 20px each + gaps */
+            gap: 1px;
+        }
+    
+        .qr-cell {
+            width: 20px;
+            height: 20px;
+            box-sizing: border-box;
+        }
+    
+        .qr-cell.black {
+            background-color: black;
+        }
+    
+        .qr-cell.white {
+            background-color: white;
+        }
+    </style>
+    
+    <script src="generateQRCode.js"defer></script>
+</head>
+<body>
+    <h1>QR Codes for CMT 101 to CMT 110</h1>
+    <div id="output"></div>
+   <button onclick="downloadAllQRCodes()">Download All QR Codes as JPGs</button>
+   <p>
+
+</body>
+</html>

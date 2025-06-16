@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> <!-- Link to external CSS file -->
+    <script>
+    function validateForm(formId) {
+        var form = document.getElementById(formId);
+        var stdId = form.stdId.value.trim();
+        var unitCode = form.unitCode.value.trim();
+        var academicYear = form.academicYear.value.trim();
+        var semester = form.semester.value.trim();
+        var academicStage = form.academicStage.value.trim();
+        var registrationStatus = form.registrationStatus.value.trim();
+    
+        // Check for empty fields
+        if (!stdId || !unitCode || !academicYear || !semester || !academicStage || !registrationStatus) {
+            alert("All fields are required.");
+            return false;
+        }
+    
+        // Validate Academic Year (should be a number)
+        if (isNaN(academicYear)) {
+            alert("Academic Year must be a number.");
+            return false;
+        }
+    
+        // Validate Semester (should be 1 or 2)
+        if (semester !== "1" && semester !== "2") {
+            alert("Semester must be either 1 or 2.");
+            return false;
+        }
+    
+        // Validate Registration Status (should be either 'Registered' or 'Pending')
+        var validStatuses = ["Registered", "Pending"];
+        if (!validStatuses.includes(registrationStatus)) {
+            alert("Registration Status must be 'Registered' or 'Pending'.");
+            return false;
+        }
+    
+        return true;
+    }
+</script>    
+</head>
+<body>
+    <h2>Unit Registration</h2>
+    <form id="unitRegistrationForm" action="unitRegistration.php" method="POST" onsubmit="return validateForm('unitRegistrationForm')">
+        Student ID: <input type="text" name="stdId"><br>
+        Unit Code: <input type="text" name="unitCode"><br>
+        Academic Year: <input type="text" name="academicYear"><br>
+        Semester: <input type="text" name="semester"><br>
+        Academic Stage: <input type="text" name="academicStage"><br>
+        Registration Status: <input type="text" name="registrationStatus"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
